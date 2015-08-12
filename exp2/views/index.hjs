@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head class='header'>
+    <title>{{ title }}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  </head>
+  <body>
+    <h1 class="text-danger">{{ title }}</h1>
+    <br>
+    <ul class="nav nav-tabs" id="tabs">
+    	<li class="active"><a href="#2015camp" data-toggle="tab">2015&nbspCamp</a></li>
+      <li><a href="#apply" data-toggle="tab" >Apply</a></li>
+    	<li><a href="#donate" data-toggle="tab">Donate</a></li>
+    	<li><a href="#contact" data-toggle="tab">Contact</a></li>
+    </ul>
+    <div class="tab-content">
+    	<div class="tab-pane active" id="2015camp">
+        <p class="text-align-middle">The __________________ is an initiative to bring under 23 American lightweight rowers together in a centralized system  to qualify for and win medals at the Under-23 World Rowing Championships. ____________’s purpose is to provide an economically viable option for qualified collegiate-age lightweights to have access to elite coaching and a fully equipped training facility. Rowers in the __________ compete in boat classes unfunded by USRowing. To compete at the 2016 World Championships in Rotterdam, Netherlands, ____________ athletes must first qualify at the USRowing Under-23 National Team Trials. Selected athletes must pay their way to Rotterdam including airfare, lodging, racing fees, and boat rentals. ________ aims to subsidize these costs through supporter donations. More information on how you can be a part of __________’s success can be found on the donation page. 
+
+______________ will focus on and hold selection for the BLM4x, BLM2x, BLM2- and BLM1x. Selected crews will compete at the USRowing Under-23 National Team Trials in June and upon qualification will continue to train for the World Championships. If you are an interested athlete, please submit a rower application on the apply page. 
+
+The selection camp will be hosted by GMS Rowing Center in New Milford, Connecticut. If you live in the New Milford area and are interested in hosting athletes through the duration of the camp, please contact us.
+
+In order to achieve the aforementioned goals, ____________ is spearheading a nationwide search for best coach possible. If you are interested in leading the next generation of elite rowers to win medals at the World Championships, please submit a coaching and rowing resume on the apply page.</p>
+      </div>
+      <div class="tab-pane " id="apply">
+        <div class="rowerapplication col-md-6">
+          <form action="/" method="POST" name="applicationform">
+            <h2 class="text-danger">Rower Application</h2>
+            <br><br>
+            <input id="name" class="name" name="name" placeholder="name"></input>
+            <br><br>
+            <input id="emailapply" class="emailapply" name="emailapply" placeholder="email address"></input>
+            <br><br>
+            <input id="birthdate" class="birthdate" name="birthdate" type="date"></input>
+            <br><br>
+            <input id="height" class="height" name="height" placeholder="height (cm)" ></input>
+            <br><br>
+            <input id="weight" class="weight" name="weight" placeholder="weight (lbs)" ></input>
+            <br><br>
+            <input id="rowingexperience" class="rowingexperience" name="rowingexperience" placeholder="rowing experience (years)" ></input>
+            <br><br>
+            <input id="college" class="college" name="college" placeholder="college"></input>
+            <br><br>
+            <input id="teamaffiliation" class="teamaffiliation" name="teamaffiliation" placeholder="team affiliation"></input>
+            <br><br>
+            <input id="2k" class="2k" name="twok" placeholder="2k (ex 6:20.0)"></input>
+            <br><br>
+            <input id="6k" class="6k" name="sixk" placeholder="6k (ex 20:30.0)"></input>
+            <br><br>
+            <input id="othererg" class="othererg" name="othererg" placeholder="other erg (ex 10k: 36:00.0)"></input>
+            <br><br>
+            <div class="row">
+                &nbsp&nbsp&nbspport&nbsp<input type="checkbox" class="port" name="port" placeholder="port"></input>&nbsp
+                starboard&nbsp<input type="checkbox" class="starboard" name="starboard" placeholder="starboard"></input>&nbsp
+                scull&nbsp<input type="checkbox" class="scull" name="scull" placeholder="scull"></input>&nbsp
+            </div>
+            <br>
+            <textarea id="results" class="results" name="results" placeholder="results and other rowing accolades"></textarea>
+            <br><br>
+            <input type="submit" value="submit" class="btn btn-primary rowerbutton">
+          </form>
+        </div>
+        <div class="coachapplication col-md-6">
+          <form action="/coachapp" method="POST" name="coachform">
+            <h3 class="text-danger">Coach Application</h3>
+            <br><br>
+            <input id="coachname" class="coachname" name="coachname" placeholder="name"></input>
+            <br><br>
+            <input id="coachemail" class="coachemail" name="coachemail" placeholder="email address"></input>
+            <br><br>
+            <input type="file" name="resume">
+            <br><br>
+            <input type="submit" value="submit" class="btn btn-primary coachbutton">
+          </form>
+        </div>
+      </div>
+    	<div class="tab-pane " id="donate"></div>
+    	<div class="tab-pane " id="contact">
+        <div class="row">
+          <div class="col-md-6">
+    		<form action="/" method="POST">
+    			<br><br>
+    			<input id="email" class="email" name="email" placeholder="email address"></input>
+    			<br><br>
+    			<input class="subject" name="subject" placeholder="subject"></input>
+    			<br><br>
+    			<textarea class="message" name="message" placeholder="message"></textarea>
+    			<br><br>
+    			<input type="submit" value="send" class="btn btn-primary">
+    		</form>
+          </div>
+          <br><br>
+          <div class="mapdiv col-md-6">
+        <iframe  class='gmsmap' width="500" height="350" frameborder="0" style="border:0"
+          src="https://www.google.com/maps/embed/v1/place?q=GMS+Rowing+Center,+Grove+Street,+New+Milford,+CT,+United+States&key=AIzaSyBStsVsVHyvNPlGhsnWu0AbNgOhI_sQwAA">
+        </iframe>
+        <p>GMS Rowing Center<br>
+          172 Grove Street<br>
+          New Milford, CT 06776, USA.</p>
+        </div>
+       </div>
+    	</div>
+    </div>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="javascripts/script.js"></script>
+</html>

@@ -1,0 +1,37 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.email {
+
+	width: 70%;
+}
+
+.subject {
+
+	width: 70%;
+}
+.message {
+
+	width: 70%;
+	height: 300px;
+}
+
+.results {
+	width: 25%;
+	height: 100px;
+}
+
+.mapdiv {
+
+
+}
+
+.rowerapplication {
+
+}
+
+.coachapplication {
+
+}

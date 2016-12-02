@@ -1,21 +1,55 @@
-$color-bg:					#ffffff;
-$color-fg:					#6e6e6e;
-$color-fg-light:			#888888;
-$color-fg-bold:				#5b5b5b;
+// Duration.
+	$duration-transition:		0.2s;
 
-$color-accent-bg:			#4eb980;
-$color-accent-fg:			rgba(255,255,255,0.8);
-$color-accent-fg-light:		rgba(255,255,255,0.5);
-$color-accent-fg-bold:		#ffffff;
+// Size.
+	$size-border-radius:		6px;
+	$size-element-height:		3em;
+	$size-element-margin:		2em;
 
-$color-accent2-bg:			#544d55;
-$color-accent2-fg:			rgba(255,255,255,0.8);
-$color-accent2-fg-light:	rgba(255,255,255,0.35);
-$color-accent2-fg-bold:		#ffffff;
+// Font.
+	$font-family:				'Source Sans Pro', sans-serif;
+	$font-family-fixed:			monospace;
+	$font-weight:				300;
+	$font-weight-bold:			400;
 
-$color-border-ie:			#cccccc;
-$color-border:				rgba(224,224,224,0.75);
-$color-border-bg:			rgba(224,224,224,0.15);
-$color-border-bg2:			rgba(224,224,224,0.35);
+// Color.
+	$color-bg:					#f5f5f5;
+	$color-fg:					#777;
+	$color-fg-bold:				#646464;
+	$color-fg-light:			#999;
 
-$size-radius:				4px;
+	$color-accent1-bg:			#666;
+	$color-accent1-fg:			mix($color-accent1-bg, #ffffff, 25%);
+	$color-accent1-fg-bold:		#ffffff;
+	$color-accent1-fg-light:	mix($color-accent1-bg, #ffffff, 40%);
+
+	$color-accent2-bg:			#e89980;
+	$color-accent2-fg:			mix($color-accent2-bg, #ffffff, 25%);
+	$color-accent2-fg-bold:		#ffffff;
+	$color-accent2-fg-light:	mix($color-accent2-bg, #ffffff, 40%);
+
+	$color-accent3-bg:			#7fcdb8;
+	$color-accent3-fg:			mix($color-accent3-bg, #ffffff, 25%);
+	$color-accent3-fg-bold:		#ffffff;
+	$color-accent3-fg-light:	mix($color-accent3-bg, #ffffff, 40%);
+
+	$color-accent4-bg:			#90b0ba;
+	$color-accent4-fg:			mix($color-accent4-bg, #ffffff, 25%);
+	$color-accent4-fg-bold:		#ffffff;
+	$color-accent4-fg-light:	mix($color-accent4-bg, #ffffff, 40%);
+
+	$color-accent5-bg:			#e5cb95;
+	$color-accent5-fg:			mix($color-accent5-bg, #ffffff, 25%);
+	$color-accent5-fg-bold:		#ffffff;
+	$color-accent5-fg-light:	mix($color-accent5-bg, #ffffff, 40%);
+
+	$color-border:				#e5e5e5;
+	$color-border-bg:			#f8f8f8;
+
+	$color-border2:				#dddddd;
+	$color-border2-bg:			#f0f0f0;
+	
+	$color-header-bg:			#444;
+	$color-header-fg:			#bbb;
+	$color-header-fg-bold:		#fff;
+	$color-header-fg-light:		#999;

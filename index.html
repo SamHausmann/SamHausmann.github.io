@@ -1,196 +1,101 @@
-<!DOCTYPE HTML>
 <html>
-    
-  
-    
-    <head>
-        <title>Inductive Wireless</title>
-        <meta http-equiv="content-type" content="text/html; charset=utf-8">    <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.dropotron.min.js"></script>    <script src="js/jquery.scrollgress.min.js"></script>    <script src="js/skel.min.js"></script>    <script src="js/skel-layers.min.js"></script>    <script src="js/init.js"></script>    <noscript>        <link rel="stylesheet" href="css/skel.css" />        <link rel="stylesheet" href="css/style.css" />        <link rel="stylesheet" href="css/style-wide.css" />    </noscript>    <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->    
-    </head>    
-  
-  
-    
-  
-    
-    <body class="landing">
-    <!-- Header -->
-    <header id="header" class="alt">
-        <nav id="nav">
-            <ul>
-                <li><a href="#banner"><span>Home</span></a></li>
-                <!--<li>-->
-                    <!--<a href="" class="icon fa-angle-down">Layouts</a>-->
-                    <!--<ul>-->
-                        <!--<li><a href="generic.html">Generic</a></li>-->
-                        <!--<li><a href="contact.html">Contact</a></li>-->
-                        <!--<li><a href="elements.html">Elements</a></li>-->
-                        <!--<li>-->
-                            <!--<a href="">Submenu</a>-->
-                            <!--<ul>-->
-                                <!--<li><a href="#">Option One</a></li>-->
-                                <!--<li><a href="#">Option Two</a></li>-->
-                                <!--<li><a href="#">Option Three</a></li>-->
-                                <!--<li><a href="#">Option Four</a></li>-->
-                            <!--</ul>-->
-                        <!--</li>-->
-                    <!--</ul>-->
-                <!--</li>-->
-                <li><a href="#cta" class="button"><span>Contact Us</span></a></li>
-            </ul>
-        </nav>
-    </header>
+  <head>
+    <title>Olympic Medal Visualization</title>
+    <meta charset="utf-8"/>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="js/outputjson.json"></script>
+    <script type="text/javascript" src="js/countrylist.json"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {
+        'packages':['geochart'],
+        // Note: you will need to get a mapsApiKey for your project.
+        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+        'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+      });
+      google.charts.setOnLoadCallback(drawRegionsMap);
 
-    <!-- Banner -->
-    <section id="banner" data-id="image_background" class="background editable" style="background-image: url('css/images/overlay.png'), url('images/banner.jpg');">
+      function drawRegionsMap() {
+
+        var result = outputjson
+        var countryKey = countrylist
+        var years = Object.keys(result)
+
+        var div = document.getElementById("regions_div")
+        var s = document.createElement("select")
+        var sLabel = document.createElement("label")
+        sLabel.innerHTML = "Choose the year you wish to visualize    "
+        s.id = "picker"
+         for (var y = 0; y < years.length; y++) {
+            var option = document.createElement("option")
+            option.text = years[y]
+            option.value = years[y]
+            s.add(option)
+          }
+
+        s.addEventListener(
+          'change',
+          function() { 
+            var year = document.getElementById("picker").value 
+
+            var table = []
+            var header = ['Country', 'Medal Score']
+            table.push(header)
+
+            var row = result[year]
+            var countries = Object.keys(row)
+
+            for(var i = 0; i < countries.length; i++) {
+              var gold = 0
+              var silver = 0
+              var bronze = 0
+              var medalScore = 0
+              var country = countries[i]
+              var countryName = countrylist[country]
+              for (var j = 0; j < row[country].length; j++) {
+                if (row[country][j] === "Gold") {
+                  gold++
+                  medalScore++
+                } else if (row[country][j] === "Silver") {
+                  silver++
+                  medalScore = medalScore + .5
+                } else if (row[country][j] === "Bronze") {
+                  bronze++
+                  medalScore = medalScore + .25
+                }
+              }
+              var temp = [countryName, medalScore]
+              table.push(temp)
+
+              var data = google.visualization.arrayToDataTable(table);
+
+              var options = {};
+
+              var dd = document.createElement("div")
+              dd.id = "draw_div"
+              div.appendChild(dd)
+
+              var chart = new google.visualization.GeoChart(document.getElementById('draw_div'));
+
+              chart.draw(data, options)
+            }
+
+            
+          },
+          false
+        )
+        div.appendChild(sLabel)
+        div.appendChild(s)
 
         
+        var table = []
+        var header = ['Country', 'Gold Medals', 'Silver Medals', 'Bronze Medals']
+        table.push(header)
 
-        <h2>Inductive Wireless</h2>
-        <p>Welcome to the next generation of wireless charging for mobile devices.</p>
-        <ul class="actions">
-            <li><a href="#cta" class="button special"><span>Contact us</span></a></li>
-            <li><a href="#main" class="button"><span>Learn More</span></a></li>
-        </ul>
-    </section>
-
-    <!-- Main -->
-    <section id="main" class="container">
-
-        <section class="box special">
-            <header class="major">
-                <h2>A charger-free solution for mobile devices</h2>
-                <p>&nbsp;</p>
-                <p>Integrating Inductive Wireless' long range charge reciever into their
-                products,  mobile device manufacturers can leverage the power of Inductive Wireless' 
-                capabilities by allowing their clients to charge wirelessly on the go without having
-                to stop and think or configure any settings. Inductive Wireless uses long range transmissions
-                to propagate charge from a charging pad (included with the mobile device) to the device in question
-                allowing users to charge their device anywhere at any time.
-                </p>
-            </header>
-            <span class="image featured">
-                <img data-id="image_main_1" src="images/MN4qr8B9THZuWhHNx.png" alt="">
-                
-            </span>
-        </section>
-
-        <section class="box special features" data-rows-selector=".features-row" data-rows-field="feature">
-            
-            <div class="features-row" data-index="1">
-                
-                <section>
-                    <span data-id="iconClass_features_1" class="icon  major fa-bolt accent4"></span>
-                    <h3>Charge Anywhere</h3>
-                    <p>Don&#39;t worry about always having a charger with you for your mobile devices or constantly put yourself in places where you have access to an outlet. With Inductive Wireless, your devices can charge anywhere, hassle-free and without any wires.</p>
-                </section>
-               
-                <section>
-                    <span data-id="iconClass_features_2" class="icon  major fa-fire accent3"></span>
-                    <h3>No Overheating</h3>
-                    <p>With Inductive Wireless&#39; state of the art charge threshold filter technology, your device will know when to stop accepting charge in order to always prevent overheating, a problem prevalent in mobile devices today.&nbsp;</p>
-                </section>
-               
-            </div>
-           
-            <div class="features-row" data-index="2">
-                
-                <section>
-                    <span data-id="iconClass_features_3" class="icon  major fa-plug accent2"></span>
-                    <h3>No Hassle</h3>
-                    <p>Any mobile device that implements Inductive Wireless comes with a charging pack which plugs into any &nbsp;AC power outlet. When the charge pack is plugged in, it is constantly listening &nbsp;to be told to start sending a charge signal to the device.&nbsp;</p>
-                </section>
-               
-                <section>
-                    <span data-id="iconClass_features_4" class="icon  major fa-wifi accent6"></span>
-                    <h3>Self-Policing</h3>
-                    <p>When your phone needs to be charged, it sends a signal to the charge pack to start charging using a wireless connection. When the phone has been sufficiently charged it automatically turns off the charging mechanism.</p>
-                </section>
-               
-            </div>
-           
-        </section>
-
-    </section>
-
-    <!-- CTA -->
-    <section id="cta">
-
-        <h2>Sign up for news about Inductive Wireless&#39; progress</h2>
-        <p>&nbsp;</p>
-
-        <form action="#" method="POST">
-            <div class="row uniform half collapse-at-2">
-                <div class="8u">
-                    <input type="email" name="email" id="email" placeholder="Email Address">
-                </div>
-                <div class="4u">
-                    <input type="submit" value="Sign Up" class="fit">
-                </div>
-            </div>
-        </form>
-
-    </section>
-
-    <!-- Footer -->
-    <footer id="footer">
-        
-        <ul class="icons">
-            
-                
-            
-                
-                    <li><a href="#" class="icon fa-twitter "><span class="label">Twitter</span></a></li>
-                
-            
-                
-                    <li><a href="#" class="icon fa-facebook "><span class="label">Facebook</span></a></li>
-                
-            
-                
-                    <li><a href="#" class="icon fa-dribbble "><span class="label">Dribbble</span></a></li>
-                
-            
-                
-            
-                
-            
-                
-                    <li><a href="#" class="icon fa-google-plus "><span class="label">Google+</span></a></li>
-                
-            
-                
-            
-                
-                    <li><a href="#" class="icon fa-github "><span class="label">Github</span></a></li>
-                
-            
-                
-            
-                
-                    <li><a href="#" class="icon fa-instagram "><span class="label">Instagram</span></a></li>
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-        </ul>
-    
-    
-        <ul class="copyright">
-            <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-        </ul>
-    </footer>
-    </body>    
-  
-  
+      }
+    </script>
+  </head>
+  <h1> Olympic Medal Visualization</h1>
+  <body>
+    <div id="regions_div" style="width: 900px; height: 500px;"></div>
+  </body>
 </html>
